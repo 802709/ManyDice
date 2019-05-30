@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package manydice;
+import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import static manydice.Dice.animate;
@@ -18,14 +19,19 @@ public class D12 extends Dice {
         super();
     }
     public D12 (int x, int y , int size, String imgSrc) {
-        super(x + 70,y + 100, size, "/images/d12.png");
+        super(x + 70,y + 100, size, "/images/d12.png",6);
     }   
-     public D12(ImageIcon ii, Image img, String animation){
-        animation = "/images/d12animated.gif";
+     public D12(ImageIcon ii, Image img, String imgSrc){
+        String animation;
         if (d12isrolling == true){
-        animate(ii, img, animation);
+            animation = "/images/d12animated.gif";
+        animate(ii, img, animation,g);
+        }
+        else if (d12isrolling == false){
+         animation = "/images/d12.png";  
+         animate(ii, img, animation,g);
         }
     }
-
+  Graphics g;
 
 }
